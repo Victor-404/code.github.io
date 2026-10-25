@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>CODE HUB | Energia para todos</title>
+
+  <style>
+
+    :root {
+
+      --bg: #080b12;
+
+      --card: #111827;
+
+      --text: #f1f5f9;
+
+      --muted: #aab5c5;
+
+      --blue: #3b82f6;
+
+      --green: #22c55e;
+
+    }
+
+    body.light {
+
+      --bg: #f1f5f9;
+
+      --card: #ffffff;
+
+      --text: #111827;
+
+      --muted: #475569;
+
+    }
+
+    * {
+
+      margin: 0;
+
+      padding: 0;
+
+      box-sizing: border-box;
+
+    }
+
+    html {
+
+      scroll-behavior: smooth;
+
+    }
+
+    body {
+
+      font-family: Arial, sans-serif;
+
+      background: var(--bg);
+
+      color: var(--text);
+
+      line-height: 1.6;
+
+      transition: background .3s, color .3s;
+
+    }
+
+    header {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      padding: 20px 7%;
+
+      border-bottom: 1px solid #263044;
+
+      position: sticky;
+
+      top: 0;
+
+      background: var(--bg);
+
+      z-index: 10;
+
+      gap: 20px;
+
+      flex-wrap: wrap;
+
+    }
+
+    .logo {
+
+      font-size: 25px;
+
+      font-weight: bold;
+
+      color: var(--blue);
+
+    }
+
+    nav {
+
+      display: flex;
+
+      gap: 18px;
+
+      flex-wrap: wrap;
+
+    }
+
+    nav a {
+
+      color: var(--text);
+
+      text-decoration: none;
+
+      font-size: 14px;
+
+    }
+
+    nav a:hover {
+
+      color: var(--blue);
+
+    }
+
+    button {
+
+      border: 0;
+
+      border-radius: 8px;
+
+      padding: 11px 16px;
+
+      cursor: pointer;
+
+      font-weight: bold;
+
+    }
+
+    button:focus-visible, a:focus-visible {
+
+      outline: 3px solid var(--green);
+
+      outline-offset: 4px;
+
+    }
+
+    .primary {
+
+      background: var(--blue);
+
+      color: white;
+
+    }
+
+    .secondary {
+
+      background: transparent;
+
+      border: 1px solid var(--blue);
+
+      color: var(--text);
+
+    }
+
+    section {
+
+      padding: 75px 8%;
+
+      scroll-margin-top: 90px;
+
+    }
+
+    .hero {
+
+      min-height: 500px;
+
+      display: flex;
+
+      align-items: center;
+
+      background:
+
+        radial-gradient(ellipse at 85% 20%,
+
+        #12366b 0%, transparent 45%);
+
+    }
+
+    .hero-content {
+
+      max-width: 750px;
+
+    }
+
+    .tag {
+
+      color: var(--green);
+
+      font-weight: bold;
+
+      margin-bottom: 15px;
+
+    }
+
+    h1 {
+
+      font-size: clamp(36px, 6vw, 64px);
+
+      line-height: 1.1;
+
+      margin-bottom: 22px;
+
+    }
+
+    h2 {
+
+      font-size: clamp(27px, 4vw, 38px);
+
+      margin-bottom: 18px;
+
+    }
+
+    p {
+
+      color: var(--muted);
+
+      margin-bottom: 18px;
+
+    }
+
+    .actions {
+
+      display: flex;
+
+      gap: 12px;
+
+      flex-wrap: wrap;
+
+      margin-top: 25px;
+
+    }
+
+    .grid {
+
+      display: grid;
+
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+      gap: 22px;
+
+      margin-top: 30px;
+
+    }
+
+    .card {
+
+      background: var(--card);
+
+      padding: 25px;
+
+      border: 1px solid #263044;
+
+      border-radius: 14px;
+
+    }
+
+    .card h3 {
+
+      margin-bottom: 12px;
+
+    }
+
+    .icon {
+
+      font-size: 32px;
+
+      margin-bottom: 12px;
+
+    }
+
+    .highlight {
+
+      color: var(--blue);
+
+    }
+
+    .green {
+
+      color: var(--green);
+
+    }
+
+    .simulator {
+
+      max-width: 650px;
+
+      background: var(--card);
+
+      padding: 25px;
+
+      border-radius: 14px;
+
+      border: 1px solid #263044;
+
+      margin-top: 25px;
+
+    }
+
+    label {
+
+      display: block;
+
+      margin: 15px 0 6px;
+
+    }
+
+    input, select {
+
+      width: 100%;
+
+      padding: 12px;
+
+      border: 1px solid #64748b;
+
+      border-radius: 8px;
+
+      background: var(--bg);
+
+      color: var(--text);
+
+      font-size: 16px;
+
+    }
+
+    .result {
+
+      margin-top: 20px;
+
+      padding: 20px;
+
+      background: #153124;
+
+      border-radius: 10px;
+
+      color: white;
+
+    }
+
+    footer {
+
+      padding: 30px 8%;
+
+      border-top: 1px solid #263044;
+
+      text-align: center;
+
+    }
+
+    @media (max-width: 700px) {
+
+      header {
+
+        padding: 18px 5%;
+
+      }
+
+      nav {
+
+        width: 100%;
+
+      }
+
+      section {
+
+        padding: 55px 6%;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <header>
+
+    <div class="logo">CODE HUB<span class="green">.</span></div>
+
+    <nav aria-label="Navegação principal">
+
+      <a href="#inicio">Início</a>
+
+      <a href="#sobre">Projeto</a>
+
+      <a href="#solucoes">Soluções</a>
+
+      <a href="#inclusao">Inclusão digital</a>
+
+      <a href="#acessibilidade">Acessibilidade</a>
+
+      <a href="#simulador">Simulador</a>
+
+    </nav>
+
+    <button class="secondary" id="themeButton"
+
+      aria-label="Alternar tema">
+
+      ☀️ / 🌙
+
+    </button>
+
+  </header>
+
+  <main>
+
+    <section class="hero" id="inicio">
+
+      <div class="hero-content">
+
+        <div class="tag">ODS 7 • ENERGIA LIMPA E ACESSÍVEL</div>
+
+        <h1>Energia limpa.<br>
+
+          <span class="highlight">Conexão para todos.</span>
+
+        </h1>
+
+        <p>
+
+          Conectando comunidades a novas oportunidades por meio
+
+          da energia renovável, da tecnologia e da inclusão digital.
+
+        </p>
+
+        <div class="actions">
+
+          <a href="#sobre">
+
+            <button class="primary">Conheça o projeto</button>
+
+          </a>
+
+          <a href="#solucoes">
+
+            <button class="secondary">Nossas soluções</button>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section id="sobre">
+
+      <div class="tag">SOBRE O PROJETO</div>
+
+      <h2>Tecnologia que transforma realidades</h2>
+
+      <p>
+
+        O CODE HUB é uma proposta acadêmica voltada a comunidades
+
+        com fornecimento elétrico limitado, instável ou inexistente.
+
+        Nosso objetivo é apresentar alternativas sustentáveis que
+
+        possam favorecer o acesso à eletricidade e às tecnologias digitais.
+
+      </p>
+
+      <p>
+
+        A iniciativa conecta a ODS 7 à inclusão digital, mostrando
+
+        como o acesso à energia pode contribuir para a educação,
+
+        a comunicação e as oportunidades profissionais.
+
+      </p>
+
+    </section>
+
+    <section id="solucoes">
+
+      <div class="tag">ENERGIA RENOVÁVEL</div>
+
+      <h2>Soluções para um futuro sustentável</h2>
+
+      <div class="grid">
+
+        <article class="card">
+
+          <div class="icon">☀️</div>
+
+          <h3>Energia solar</h3>
+
+          <p>
+
+            Painéis solares e armazenamento em baterias podem ajudar
+
+            a fornecer energia em locais adequados para essa tecnologia.
+
+          </p>
+
+        </article>
+
+        <article class="card">
+
+          <div class="icon">🌬️</div>
+
+          <h3>Energia eólica</h3>
+
+          <p>
+
+            Aproveitamento dos ventos para gerar eletricidade onde
+
+            existam condições favoráveis.
+
+          </p>
+
+        </article>
+
+        <article class="card">
+
+          <div class="icon">💧</div>
+
+          <h3>Energia hidráulica</h3>
+
+          <p>
+
+            Geração de energia por meio da água, considerando a
+
+            viabilidade técnica e os impactos ambientais.
+
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+    <section id="inclusao">
+
+      <div class="tag">INCLUSÃO DIGITAL</div>
+
+      <h2>Mais energia, mais oportunidades</h2>
+
+      <p>
+
+        A eletricidade pode criar melhores condições para que as
+
+        comunidades acessem recursos digitais e participem de
+
+        oportunidades educacionais e profissionais.
+
+      </p>
+
+      <div class="grid">
+
+        <article class="card">
+
+          <div class="icon">💻</div>
+
+          <h3>Educação</h3>
+
+          <p>Acesso a computadores, cursos on-line e ferramentas de estudo.</p>
+
+        </article>
+
+        <article class="card">
+
+          <div class="icon">🌐</div>
+
+          <h3>Conectividade</h3>
+
+          <p>Melhores condições para utilizar a internet e serviços digitais.</p>
+
+        </article>
+
+        <article class="card">
+
+          <div class="icon">💼</div>
+
+          <h3>Oportunidades</h3>
+
+          <p>Apoio à capacitação profissional e à busca por empregos.</p>
+
+        </article>
+
+      </div>
+
+      <p>
+
+        A inclusão digital também depende de internet, equipamentos,
+
+        capacitação e serviços acessíveis.
+
+      </p>
+
+    </section>
+
+    <section id="acessibilidade">
+
+      <div class="tag">ACESSIBILIDADE</div>
+
+      <h2>Tecnologia acessível para todos</h2>
+
+      <p>
+
+        Uma plataforma digital inclusiva deve oferecer boa leitura,
+
+        contraste adequado, navegação por teclado e recursos que
+
+        facilitem o uso por pessoas com diferentes necessidades.
+
+      </p>
+
+      <div class="actions">
+
+        <button class="secondary" id="increaseFont">
+
+          Aumentar fonte A+
+
+        </button>
+
+        <button class="secondary" id="decreaseFont">
+
+          Diminuir fonte A−
+
+        </button>
+
+        <button class="secondary" id="contrastButton">
+
+          Alternar alto contraste
+
+        </button>
+
+      </div>
+
+    </section>
+
+    <section id="impacto">
+
+      <div class="tag">IMPACTO SOCIAL</div>
+
+      <h2>Conectado aos Objetivos de Desenvolvimento Sustentável</h2>
+
+      <div class="grid">
+
+        <article class="card">
+
+          <h3 class="green">ODS 7</h3>
+
+          <p>
+
+            Energia limpa e acessível: o principal objetivo do projeto.
+
+          </p>
+
+        </article>
+
+        <article class="card">
+
+          <h3 class="highlight">ODS 4</h3>
+
+          <p>
+
+            Educação de qualidade: apoio ao acesso a recursos educacionais.
+
+          </p>
+
+        </article>
+
+        <article class="card">
+
+          <h3 class="green">ODS 10</h3>
+
+          <p>
+
+            Redução das desigualdades: diminuição de barreiras
+
+            ao acesso à tecnologia.
+
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+    <section id="simulador">
+
+      <div class="tag">SIMULADOR EDUCATIVO</div>
+
+      <h2>Calcule o consumo de energia</h2>
+
+      <p>
+
+        Informe os dados de um equipamento para estimar seu consumo diário.
+
+      </p>
+
+      <div class="simulator">
+
+        <label for="equipment">Equipamento</label>
+
+        <select id="equipment">
+
+          <option value="10">Lâmpada LED (10 W)</option>
+
+          <option value="60">Notebook (60 W)</option>
+
+          <option value="100">Televisão (100 W)</option>
+
+          <option value="15">Roteador (15 W)</option>
+
+          <option value="500">Computador (500 W)</option>
+
+        </select>
+
+        <label for="quantity">Quantidade de equipamentos</label>
+
+        <input id="quantity" type="number" min="1"
+
+          value="1" step="1">
+
+        <label for="hours">Horas de uso por dia</label>
+
+        <input id="hours" type="number" min="0"
+
+          max="24" value="8" step="0.5">
+
+        <button class="primary" id="calculate"
+
+          style="margin-top:20px">
+
+          Calcular consumo
+
+        </button>
+
+        <div class="result" id="result" aria-live="polite">
+
+          Consumo diário estimado: 0,08 kWh
+
+        </div>
+
+      </div>
+
+      <p style="margin-top:15px">
+
+        Esta ferramenta apresenta uma estimativa educativa.
+
+        O dimensionamento de um sistema energético real exige
+
+        avaliação técnica.
+
+      </p>
+
+    </section>
+
+    <section id="contato">
+
+      <div class="tag">CODE HUB</div>
+
+      <h2>Um futuro mais conectado começa com energia</h2>
+
+      <p>
+
+        O CODE HUB une sustentabilidade, tecnologia e responsabilidade
+
+        social para apresentar caminhos que favoreçam a inclusão digital.
+
+      </p>
+
+      <a href="#inicio">
+
+        <button class="primary">Voltar ao início</button>
+
+      </a>
+
+    </section>
+
+  </main>
+
+  <footer>
+
+    <p>
+
+      CODE HUB — Projeto acadêmico inspirado na ODS 7.
+
+      Energia limpa, inclusão digital e acessibilidade.
+
+    </p>
+
+  </footer>
+
+  <script>
+
+    const themeButton = document.getElementById("themeButton");
+
+    const increaseFont = document.getElementById("increaseFont");
+
+    const decreaseFont = document.getElementById("decreaseFont");
+
+    const contrastButton = document.getElementById("contrastButton");
+
+    let fontSize = 16;
+
+    themeButton.addEventListener("click", () => {
+
+      document.body.classList.toggle("light");
+
+    });
+
+    increaseFont.addEventListener("click", () => {
+
+      fontSize = Math.min(fontSize + 2, 24);
+
+      document.documentElement.style.fontSize = fontSize + "px";
+
+    });
+
+    decreaseFont.addEventListener("click", () => {
+
+      fontSize = Math.max(fontSize - 2, 12);
+
+      document.documentElement.style.fontSize = fontSize + "px";
+
+    });
+
+    contrastButton.addEventListener("click", () => {
+
+      document.body.classList.toggle("high-contrast");
+
+      const enabled =
+
+        document.body.classList.contains("high-contrast");
+
+      document.body.style.filter =
+
+        enabled ? "contrast(1.5)" : "none";
+
+      contrastButton.setAttribute(
+
+        "aria-pressed",
+
+        String(enabled)
+
+      );
+
+    });
+
+    document.getElementById("calculate").addEventListener("click", () => {
+
+      const watts = Number(document.getElementById("equipment").value);
+
+      const quantity = Number(document.getElementById("quantity").value);
+
+      const hours = Number(document.getElementById("hours").value);
+
+      const result = document.getElementById("result");
+
+      if (
+
+        !Number.isFinite(quantity) ||
+
+        !Number.isFinite(hours) ||
+
+        quantity < 1 ||
+
+        !Number.isInteger(quantity) ||
+
+        hours < 0 ||
+
+        hours > 24
+
+      ) {
+
+        result.textContent =
+
+          "Informe uma quantidade válida e entre 0 e 24 horas de uso.";
+
+        return;
+
+      }
+
+      const consumption = watts * quantity * hours / 1000;
+
+      result.textContent =
+
+        "Consumo diário estimado: " +
+
+        consumption.toLocaleString("pt-BR", {
+
+          minimumFractionDigits: 2,
+
+          maximumFractionDigits: 3
+
+        }) + " kWh";
+
+    });
+
+  </script>
+
+</body>
+
+</html>
